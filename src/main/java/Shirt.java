@@ -37,7 +37,12 @@ public class Shirt implements Comparable<Shirt> {
         List<Shirt> mutableShirts = new ArrayList<>(shirts);
         System.out.println(mutableShirts);
         // Sort by increasing size.
-        mutableShirts.sort(new IncreasingSizeComparator());
+        mutableShirts.sort(new Comparator<Shirt>() {
+            @Override
+            public int compare(Shirt o1, Shirt o2) {
+                return o1.size - o2.size;
+            }
+        });
         System.out.println(mutableShirts);
     }
 }
