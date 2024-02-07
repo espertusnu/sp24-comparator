@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Shirt implements Comparable<Shirt> {
@@ -21,6 +22,13 @@ public class Shirt implements Comparable<Shirt> {
         return String.format("%s shirt (size %d)", brand, size);
     }
 
+    static class IncreasingSizeComparator implements Comparator<Shirt> {
+        @Override
+        public int compare(Shirt o1, Shirt o2) {
+            return o1.size - o2.size;
+        }
+    }
+
     public static void main(String[] args) {
         List<Shirt> shirts = List.of(
                 new Shirt(10,  "Adidas"),
@@ -28,7 +36,8 @@ public class Shirt implements Comparable<Shirt> {
         );
         List<Shirt> mutableShirts = new ArrayList<>(shirts);
         System.out.println(mutableShirts);
-        Collections.sort(mutableShirts);
+        // Sort by increasing size.
+        mutableShirts.sort(new IncreasingSizeComparator());
         System.out.println(mutableShirts);
     }
 }
