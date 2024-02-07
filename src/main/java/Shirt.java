@@ -33,5 +33,9 @@ public class Shirt implements Comparable<Shirt> {
         // Sort by increasing size.
         mutableShirts.sort((o1, o2) -> o1.size - o2.size);
         System.out.println(mutableShirts);
+
+        // Sort alphabetically by brand.
+        mutableShirts.sort((o1, o2) -> o1.brand.compareTo(o2.brand));
+        System.out.println(mutableShirts);
     }
 }
