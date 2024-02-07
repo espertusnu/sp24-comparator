@@ -22,13 +22,6 @@ public class Shirt implements Comparable<Shirt> {
         return String.format("%s shirt (size %d)", brand, size);
     }
 
-    static class IncreasingSizeComparator implements Comparator<Shirt> {
-        @Override
-        public int compare(Shirt o1, Shirt o2) {
-            return o1.size - o2.size;
-        }
-    }
-
     public static void main(String[] args) {
         List<Shirt> shirts = List.of(
                 new Shirt(10,  "Adidas"),
@@ -36,13 +29,9 @@ public class Shirt implements Comparable<Shirt> {
         );
         List<Shirt> mutableShirts = new ArrayList<>(shirts);
         System.out.println(mutableShirts);
+
         // Sort by increasing size.
-        mutableShirts.sort(new Comparator<Shirt>() {
-            @Override
-            public int compare(Shirt o1, Shirt o2) {
-                return o1.size - o2.size;
-            }
-        });
+        mutableShirts.sort((o1, o2) -> o1.size - o2.size);
         System.out.println(mutableShirts);
     }
 }
